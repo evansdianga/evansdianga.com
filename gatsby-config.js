@@ -5,7 +5,7 @@ module.exports = {
     title: userConfig.title,
     author: userConfig.author,
     description: userConfig.description,
-    siteUrl: userConfig.siteUrl,
+    siteUrl: userConfig.siteUrl
   },
   pathPrefix: userConfig.pathPrefix,
   plugins: [
@@ -13,8 +13,8 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/src/pages`,
-        name: 'pages',
-      },
+        name: 'pages'
+      }
     },
     {
       resolve: `gatsby-transformer-remark`,
@@ -26,28 +26,28 @@ module.exports = {
             options: {
               maxWidth: 700,
               linkImagesToOriginal: false,
-              wrapperStyle: 'margin: 15px -30px !important',
-            },
+              wrapperStyle: 'margin: 15px -30px !important'
+            }
           },
           {
             resolve: `gatsby-remark-responsive-iframe`,
             options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
-            },
+              wrapperStyle: `margin-bottom: 1.0725rem`
+            }
           },
           'gatsby-remark-prismjs',
           'gatsby-remark-copy-linked-files',
-          'gatsby-remark-smartypants',
-        ],
-      },
+          'gatsby-remark-smartypants'
+        ]
+      }
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
-      },
+        trackingId: `UA-99255854-1`
+      }
     },
     `gatsby-plugin-feed`,
     {
@@ -59,10 +59,10 @@ module.exports = {
         background_color: '#fff',
         theme_color: userConfig.primaryColor,
         display: 'minimal-ui',
-        icon: 'src/main.jpg',
-      },
+        icon: 'src/main.jpg'
+      }
     },
     `gatsby-plugin-offline`,
-    `gatsby-plugin-react-helmet`,
-  ],
+    `gatsby-plugin-react-helmet`
+  ]
 };
