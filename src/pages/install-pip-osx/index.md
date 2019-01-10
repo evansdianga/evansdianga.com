@@ -3,9 +3,9 @@ title: Installing Python 3 and Pip on Mac OS
 date: "2017-05-11"
 ---
 
-**NOTE**: This tutorial **does not use** [Virtual Environments](https://packaging.python.org/installing/#creating-and-using-virtual-environments) like [`virtualenv`](https://packaging.python.org/key_projects/#virtualenv) or [`pyenv`](https://packaging.python.org/key_projects/#venv) to manage various `python` versions
-
 Apple's Mac OS comes with python 2.7 installed by default. Perhaps you may want to use python 3.x.x on your machine and also use pip for package management with `python 3.x.x.` The easiest way to achieve this is by:
+
+**NOTE**: This tutorial **does not use** [Virtual Environments](https://packaging.python.org/installing/#creating-and-using-virtual-environments) like [`virtualenv`](https://packaging.python.org/key_projects/#virtualenv) or [`pyenv`](https://packaging.python.org/key_projects/#venv) to manage various `python` versions
 
 ## 1. Installing `python3`
 
