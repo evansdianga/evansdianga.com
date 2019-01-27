@@ -1,2 +1,3 @@
 # Redirect default Netlify subdomain to primary domain
 https://evansdianga.netlify.com/* https://evansdianga.com/:splat 301!
+/* /index.html 200
