@@ -29,9 +29,9 @@ Attend lectures, make notes, discuss with others the things you learn, help thos
 
 Always be learning. In our day, the internet has democratized learning. Are there things that you didn't understand well in class? See if there's material on that on YouTube. Make use of MOOCs and Open Courseware. Quite a number of universities offer their content- videos, lecturer's notes, homework, assignments, exams for free. Use them. If you aren't satisfied by what you are getting from the formal class just register and learn from the MOOCs. You may even just watch or read a specific topic without feeling obligated to take the whole MOOC. Whatever works for you. Do the assignments, homework from these online resources, if possible. You will broaden your problem solving skills and also get to know what others in the world are learning. And the good thing is that most of these resources are free! Here are but a few:
 
-- [Coursera](https://www.coursera.org/)
-- [EdX](https://www.edx.org/)
-- [MIT Open Courseware](https://ocw.mit.edu/index.htm)
+- <a href="https://www.coursera.org/" target="_blank">Coursera</a>
+- <a href="https://www.edx.org/" target="_blank">EdX</a>
+- <a href="https://ocw.mit.edu" target="_blank">MIT Open Courseware</a>
 
 **3. Quality Friendships**
 
