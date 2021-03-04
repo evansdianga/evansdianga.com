@@ -1,8 +1,7 @@
-import {graphql} from 'gatsby';
+import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
 import get from 'lodash/get';
 import React from 'react';
-
 import userConfig from '../../config';
 
 import Layout from './layout';
@@ -71,34 +70,13 @@ class BlogPostTemplate extends React.Component {
               </Button>
             )}
           </PageNav>
-          <JustComments />
+          {/* <Comments /> */}
         </Container>
       </Layout>
     );
   }
 }
 
-class JustComments extends React.Component {
-  constructor(...args) {
-    super(...args)
-    this.ref = React.createRef()
-  }
-  render() {
-    return (
-      <div
-        ref={this.ref}
-        className="just-comments"
-        data-apikey="80af9cac-c4a1-41ee-811e-8f31972ef12f"
-      />
-    )
-  }
-  componentDidMount() {
-    const s = document.createElement('script')
-    s.src = '//just-comments.com/w.js'
-    s.setAttribute('data-timestamp', +new Date())
-    this.ref.current.appendChild(s)
-  }
-}
 
 export default BlogPostTemplate;
 
