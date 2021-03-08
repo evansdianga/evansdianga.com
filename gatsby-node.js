@@ -5,78 +5,87 @@ const { createFilePath } = require('gatsby-source-filesystem');
 const createPaginatedPages = require('gatsby-paginate');
 const userConfig = require('./config');
 
-exports.createPages = ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
-
-  return new Promise((resolve, reject) => {
-    const blogPost = path.resolve('./src/templates/blog-post.js');
-    resolve(
-      graphql(
-        `
-          {
-            allMarkdownRemark(
-              sort: { fields: [frontmatter___date], order: DESC }
-              limit: 1000
-            ) {
-              edges {
-                node {
-                  fields {
-                    slug
-                  }
-                  excerpt
-                  frontmatter {
-                    title
-                    date(formatString: "MMMM D, YYYY")
-                    featuredImage {
-                      childImageSharp {
-                        sizes(maxWidth: 850) {
-                          base64
-                          aspectRatio
-                          src
-                          srcSet
-                          sizes
-                        }
-                      }
-                    }
+  const blogPostTemplate = path.resolve('./src/templates/blog-post.js');
+  const tagTemplate = path.resolve('src/templates/tags.js');
+  const result = await graphql(`
+    {
+      postsRemark: allMarkdownRemark(
+        sort: { order: DESC, fields: [frontmatter___date] }
+        limit: 2000
+      ) {
+        edges {
+          node {
+            fields {
+              slug
+            }
+            excerpt
+            frontmatter {
+              title
+              date(formatString: "MMMM D, YYYY")
+              featuredImage {
+                childImageSharp {
+                  sizes(maxWidth: 850) {
+                    base64
+                    aspectRatio
+                    src
+                    srcSet
+                    sizes
                   }
                 }
               }
             }
           }
-        `,
-      ).then(result => {
-        if (result.errors) {
-          console.log(result.errors);
-          reject(result.errors);
         }
+      }
+      tagsGroup: allMarkdownRemark(limit: 2000) {
+        group(field: frontmatter___tags) {
+          fieldValue
+        }
+      }
+    }
+  `);
+  console.log(result)
+  if (result.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query.`);
+    return;
+  }
 
-        // Create blog posts pages.
-        const posts = result.data.allMarkdownRemark.edges;
+  const posts = result.data.postsRemark.edges;
+  // Create post detail pages
+  posts.forEach(({ node }, index) => {
+    const previous = index === posts.length - 1 ? null : posts[index + 1].node;
+    const next = index === 0 ? null : posts[index - 1].node;
 
-        _.each(posts, (post, index) => {
-          const previous =
-            index === posts.length - 1 ? null : posts[index + 1].node;
-          const next = index === 0 ? null : posts[index - 1].node;
+    createPaginatedPages({
+      edges: posts,
+      createPage,
+      pageTemplate: 'src/templates/index.js',
+      pageLength: userConfig.postsPerPage,
+    });
 
-          createPaginatedPages({
-            edges: result.data.allMarkdownRemark.edges,
-            createPage: createPage,
-            pageTemplate: 'src/templates/index.js',
-            pageLength: userConfig.postsPerPage,
-          });
-
-          createPage({
-            path: post.node.fields.slug,
-            component: blogPost,
-            context: {
-              slug: post.node.fields.slug,
-              previous,
-              next,
-            },
-          });
-        });
-      }),
-    );
+    createPage({
+      path: node.fields.slug,
+      component: blogPostTemplate,
+      context: {
+        slug: node.fields.slug,
+        previous,
+        next,
+      },
+    });
+  });
+  // Extract tag data from query
+  const tags = result.data.tagsGroup.group;
+  // Make tag pages
+  tags.forEach((tag) => {
+    createPage({
+      path: `/tags/${_.kebabCase(tag.fieldValue)}/`,
+      component: tagTemplate,
+      context: {
+        tag: tag.fieldValue,
+      },
+    });
   });
 };
 
