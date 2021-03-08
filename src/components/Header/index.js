@@ -25,10 +25,11 @@ function Header({ config }) {
             website={social.website}
             github={social.github}
             twitter={social.twitter}
-            linkedin={social.linkedin}
+            // linkedin={social.linkedin}
           />
         }
       </Wrapper>
+        <div style={{textAlign:'center',marginBottom:'40px'}}><span style={{ fontSize:'2em',fontWeight:'bold'}} ><Link to="/tags">Tags</Link></span></div>
     </Container> 
   );
 }
