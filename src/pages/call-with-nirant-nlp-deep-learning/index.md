@@ -1,6 +1,7 @@
 ---
 title: Call with  Nirant Kasliwal on NLP, Deep Learning and fast.ai
 date: "2019-01-23"
+tags: ["machine learning", "interview"]
 ---
 
 One of the active members of the [Fast.ai](https://www.fast.ai/) community [Nirant Kasliwal](https://twitter.com/NirantK) made an offer to answer any NLP and data science questions all through January for [free](https://twitter.com/NirantK/status/1081793853823373313). Having had lots of questions on fast.ai, deep learning and NLP myself, I scheduled for a 30 minute call on 21st January 2019. I sent the questions in advance and got some of them answered during the call. These are my notes from the call and not verbatim answers.

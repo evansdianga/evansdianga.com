@@ -1,6 +1,7 @@
 ---
 title: Connecting Bluetooth Headphones to Mac
 date: "2019-05-15"
+tags: ["macOS"]
 ---
 
 I recently faced the challenge of not being able to pair my bluetooth headphones to MacBook specifically running `MacOS High Sierra`. I couldn't get it to work even after resetting the Bluetooth module and generating a new Bluetooth Profile.
